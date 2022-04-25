@@ -40,3 +40,12 @@ def save_csv(qualifying_loans, csvpath):
         A CSV file saved as whatever name the user inputs that is located in
         the folder the user inputs
     """
+    with open(cvspath, "w", newline='') as cvsfile:
+        qualifiying_loans = []
+        cvswriter = csv.writer(cvsfile, delimiter=",")
+
+        for row in qualifiying_loans:
+            cvswriter.writerow(row)
+    return qualifiying_loans
+
+
