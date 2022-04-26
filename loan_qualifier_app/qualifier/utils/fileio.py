@@ -7,6 +7,7 @@ This contains a helper function for loading and saving CSV files.
 import csv
 
 
+
 def load_csv(csvpath):
     """Reads the CSV file from path provided.
 
@@ -29,7 +30,7 @@ def load_csv(csvpath):
             data.append(row)
     return data
 
-def save_csv(qualifying_loans, csvpath):
+def save_csv(qualifying_loans, cvspath):
     """Saves the qualifying loans to a CSV file. 
     
     Args:
