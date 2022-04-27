@@ -1,0 +1,51 @@
+   87  # SPDX-License-Identifier: BSD-3-Clause
+   88  __add_sys_prefix_to_path() {     if [ -n "${_CE_CONDA}" ] && [ -n "${WINDIR+x}" ]; then         SYSP=$(\dirname "${CONDA_EXE}");     else         SYSP=$(\dirname "${CONDA_EXE}");         SYSP=$(\dirname "${SYSP}");     fi;      if [ -n "${WINDIR+x}" ]; then         PATH="${SYSP}/bin:${PATH}";         PATH="${SYSP}/Scripts:${PATH}";         PATH="${SYSP}/Library/bin:${PATH}";         PATH="${SYSP}/Library/usr/bin:${PATH}";         PATH="${SYSP}/Library/mingw-w64/bin:${PATH}";         PATH="${SYSP}:${PATH}";     else         PATH="${SYSP}/bin:${PATH}";     fi;     \export PATH; }
+   89  __conda_exe() (     __add_sys_prefix_to_path;     "$CONDA_EXE" $_CE_M $_CE_CONDA "$@"; )
+   90  __conda_hashr() {     if [ -n "${ZSH_VERSION:+x}" ]; then         \rehash;     elif [ -n "${POSH_VERSION:+x}" ]; then         :  # pass;     else         \hash -r;     fi; }
+   91  __conda_activate() {     if [ -n "${CONDA_PS1_BACKUP:+x}" ]; then         PS1="$CONDA_PS1_BACKUP";         \unset CONDA_PS1_BACKUP;     fi;     \local ask_conda;     ask_conda="$(PS1="${PS1:-}" __conda_exe shell.posix "$@")" || \return;     \eval "$ask_conda";     __conda_hashr; }
+   92  __conda_reactivate() {     \local ask_conda;     ask_conda="$(PS1="${PS1:-}" __conda_exe shell.posix reactivate)" || \return;     \eval "$ask_conda";     __conda_hashr; }
+   93  conda() {     \local cmd="${1-__missing__}";     case "$cmd" in         activate|deactivate)             __conda_activate "$@";             ;;         install|update|upgrade|remove|uninstall)             __conda_exe "$@" || \return;             __conda_reactivate;             ;;         *)             __conda_exe "$@";             ;;     esac; }
+   94  if [ -z "${CONDA_SHLVL+x}" ]; then     \export CONDA_SHLVL=0     if [ -n "${_CE_CONDA:+x}" ] && [ -n "${WINDIR+x}" ]; then         PATH="$(\dirname "$CONDA_EXE")/condabin${PATH:+":${PATH}"}";     else         PATH="$(\dirname "$(\dirname "$CONDA_EXE")")/condabin${PATH:+":${PATH}"}";     fi;     \export PATH;      if [ -z "${PS1+x}" ]; then         PS1=;     fi; fi
+   95  cd ""C:\Users\jarre\OneDrive\FinTech BootCamp Files\Challenge_2""
+   96  cd "C:\Users\jarre\OneDrive\FinTech BootCamp Files\Challenge_2"
+   97  conda activate dev
+   98  git status
+   99  git add Challenge_2
+  100  git clone https://github.com/jblidell/Challenge_2.git
+  101  ls
+  102  cd Challenge_2
+  103  ls
+  104  git status
+  105  git commit
+  106  git commit loan_qualifier_app
+  107  git add loan_qualifier_app
+  108  git status
+  109  git push
+  110  git status
+  111  git commit -m "initial upload to github"
+  112  git status
+  113  git push
+  114  git status
+  115  git commit -m "think my save_csv function is complete
+"
+  116  git add
+  117  git add loan_qualifier_app
+  118  git status
+  119  git commit -m "commiting save_csv, looks to be done"
+  120  git push
+  121  git status
+  122  ls
+  123  cd loan_qualifier_app
+  124  ls
+  125  python app.py
+  126  python app.py
+  127  python app.py
+  128  python app.py
+  129  python app.py
+  130  pyhton app.py
+  131  ls
+  132  python app.py
+  133  python app.py
+  134  python app.py
+  135  python app.py
+  136  history 50 >terminal_history.txt
