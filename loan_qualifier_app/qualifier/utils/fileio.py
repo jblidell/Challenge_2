@@ -5,6 +5,7 @@ This contains a helper function for loading and saving CSV files.
 
 """
 import csv
+from importlib.resources import path
 
 
 
@@ -42,11 +43,11 @@ def save_csv(qualifying_loans, cvspath):
         the folder the user inputs
     """
     with open(cvspath, "w", newline='') as cvsfile:
-        qualifiying_loans = []
+        
         cvswriter = csv.writer(cvsfile, delimiter=",")
 
-        for row in qualifiying_loans:
+        for row in qualifying_loans:
             cvswriter.writerow(row)
-    return qualifiying_loans
+    return qualifying_loans
 
 
